@@ -1,5 +1,6 @@
 package com.bradley.wilson.jokes.core.network.di
 
+import com.bradley.wilson.jokes.core.network.ApiService
 import com.bradley.wilson.jokes.core.network.di.NetworkDependencyBuilder.BASE_URL
 import com.bradley.wilson.jokes.core.network.di.NetworkDependencyBuilder.httpClient
 import okhttp3.OkHttpClient
@@ -26,5 +27,8 @@ val networkModule: Module = module {
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+    factory {
+        ApiService()
     }
 }

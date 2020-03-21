@@ -15,7 +15,12 @@ import retrofit2.Retrofit
 val dadJokesModule: Module = module {
     single { DadJokeDataSource(get(), get()) as DadJokesRepository }
     factory { DadJokeRemoteDataSource(get()) }
-    factory { DadJokeApiService(get<Retrofit>().create(DadJokeApi::class.java)) }
+    factory {
+        DadJokeApiService(
+            get<Retrofit>().create(DadJokeApi::class.java),
+            get()
+        )
+    }
     factory { DadJokeMapper() }
     factory { FetchDadJokeOfTheDayUseCase(get()) }
     factory { SearchDadJokesUseCase(get()) }
