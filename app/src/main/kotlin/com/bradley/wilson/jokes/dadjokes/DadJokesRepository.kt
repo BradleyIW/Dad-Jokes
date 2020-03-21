@@ -6,7 +6,7 @@ import com.bradley.wilson.jokes.dadjokes.usecases.DadJoke
 
 interface DadJokesRepository {
 
-    suspend fun dadJokeOfTheDay(): Either<Failure, DadJoke>
+    suspend fun randomDadJoke(): Either<Failure, DadJoke>
 
     suspend fun searchDadJokes(searchTerm: String): Either<Failure, List<DadJoke>>
 

@@ -2,16 +2,17 @@ package com.bradley.wilson.jokes.dadjokes.datasources.remote
 
 import com.bradley.wilson.jokes.core.functional.map
 import com.bradley.wilson.jokes.core.network.ApiService
+import com.bradley.wilson.jokes.core.network.NetworkHandler
 
 class DadJokeApiService(
-    private val api: DadJokeApi,
-    private val apiService: ApiService = ApiService()
-) {
+    override val networkHandler: NetworkHandler,
+    private val api: DadJokeApi
+) : ApiService() {
     suspend fun jokeOfTheDay() =
-        apiService.request { api.randomDadJoke() }
+        request { api.randomDadJoke() }
 
     suspend fun searchDadJokes(searchTerm: String) =
-        apiService.request { api.searchDadJokes(searchTerm) }
+        request { api.searchDadJokes(searchTerm) }
             .map {
                 it.results
             }

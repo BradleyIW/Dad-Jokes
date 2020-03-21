@@ -6,7 +6,7 @@ import com.bradley.wilson.jokes.dadjokes.datasources.remote.DadJokeApi
 import com.bradley.wilson.jokes.dadjokes.datasources.remote.DadJokeApiService
 import com.bradley.wilson.jokes.dadjokes.datasources.remote.DadJokeRemoteDataSource
 import com.bradley.wilson.jokes.dadjokes.mapper.DadJokeMapper
-import com.bradley.wilson.jokes.dadjokes.usecases.FetchDadJokeOfTheDayUseCase
+import com.bradley.wilson.jokes.dadjokes.usecases.FetchRandomDadJokeUseCase
 import com.bradley.wilson.jokes.dadjokes.usecases.SearchDadJokesUseCase
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -17,11 +17,11 @@ val dadJokesModule: Module = module {
     factory { DadJokeRemoteDataSource(get()) }
     factory {
         DadJokeApiService(
-            get<Retrofit>().create(DadJokeApi::class.java),
-            get()
+            get(),
+            get<Retrofit>().create(DadJokeApi::class.java)
         )
     }
     factory { DadJokeMapper() }
-    factory { FetchDadJokeOfTheDayUseCase(get()) }
+    factory { FetchRandomDadJokeUseCase(get()) }
     factory { SearchDadJokesUseCase(get()) }
 }

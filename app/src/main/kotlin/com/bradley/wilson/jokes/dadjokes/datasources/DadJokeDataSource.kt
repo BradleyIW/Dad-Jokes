@@ -10,15 +10,15 @@ class DadJokeDataSource(
     private val dadJokeMapper: DadJokeMapper
 ) : DadJokesRepository {
 
-    override suspend fun dadJokeOfTheDay() =
+    override suspend fun randomDadJoke() =
         remoteDataSource.jokeOfTheDay().map {
-            dadJokeMapper.fromResponse(it)
+            dadJokeMapper.fromDadJokeResponse(it)
         }
 
     override suspend fun searchDadJokes(searchTerm: String) =
         remoteDataSource.searchDadJokes(searchTerm).map { dadJokes ->
             dadJokes.map {
-                dadJokeMapper.fromResponse(it)
+                dadJokeMapper.fromDadJokeResponse(it)
             }
         }
 
