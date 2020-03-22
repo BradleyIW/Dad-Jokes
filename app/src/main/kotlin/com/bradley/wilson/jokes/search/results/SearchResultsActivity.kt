@@ -1,4 +1,4 @@
-package com.bradley.wilson.jokes.search
+package com.bradley.wilson.jokes.search.results
 
 import android.app.SearchManager
 import android.content.Intent
@@ -23,7 +23,10 @@ class SearchResultsActivity : AppCompatActivity(R.layout.activity_search_results
     private fun handleIntent(intent: Intent?) {
         if (Intent.ACTION_SEARCH == intent?.action) {
             val query = intent.getStringExtra(SearchManager.QUERY) ?: String.empty()
-            val fragment = SearchResultsFragment.newInstance(query)
+            val fragment =
+                SearchResultsFragment.newInstance(
+                    query
+                )
             fragmentTransaction { replace(R.id.activitySearchResultsLayoutContainer, fragment) }
         } else finish()
     }

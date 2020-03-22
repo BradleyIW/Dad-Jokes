@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import com.bradley.wilson.jokes.R
 import com.bradley.wilson.jokes.core.extension.fragmentTransaction
-import com.bradley.wilson.jokes.search.SearchResultsActivity
+import com.bradley.wilson.jokes.search.results.SearchResultsActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(R.layout.activity_home) {
@@ -23,7 +23,6 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home) {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
-        // Associate searchable configuration with the SearchView
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         (menu.findItem(R.id.toolbarSearchItem).actionView as SearchView).apply {
             setSearchableInfo(

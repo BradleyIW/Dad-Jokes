@@ -28,7 +28,6 @@ class SearchViewModel(
 
     private fun handleSearchSuccess(jokes: List<DadJoke>) {
         _searchResultsLiveData.postValue(jokes.map {
-            Log.e("SearchViewModel", it.joke)
             dadJokeMapper.fromDadJoke(it)
         })
     }
